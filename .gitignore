@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/PostApp/appsettings.Development.json
+/PostApp/appsettings.json
+/PostApp/wwwroot/imgs/Users
