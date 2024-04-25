@@ -1,0 +1,61 @@
+﻿@using PostApp.Core.Application.ViewModels.Users;
+@model LoginViewModel;
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="row mt-5">
+    <div class="col-6 offset-3">
+        <div class="card">
+            <div class="card-body">
+                @if (Model.HasError)
+                {
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <p class="mb-0">@Model.Error</p>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
+
+
+                <form method="post" asp-controller="User" asp-action="Index">
+
+                    <div class="mb-3 fw-normal text-center">
+                        <i class="bi bi-camera-reels h2"></i>
+                        <h1 class="h3">Login</h1>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="mb-3">
+                            <label asp-for="UserName">Username</label>
+                            <input class="form-control" asp-for="UserName" placeholder="Username" />
+                            <span asp-validation-for="UserName" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Password">Password</label>
+                            <input class="form-control" asp-for="Password" placeholder="Password" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                    </div>
+                   
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary form-control mt-3">Login</button>
+                    </div>
+
+                </form>
+
+                <div class="mb-3 mt-4 text-center">
+                    <a asp-controller="User" asp-action="ForgotPassword" class="text-primary">Forgot Password?</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mt-3">
+            <div class="card-body pt-4">
+                <div class="text-center">
+                    <p>Don't have an account? <a asp-controller="User" asp-action="Register" class="fw-bold text-primary">Sign Up</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

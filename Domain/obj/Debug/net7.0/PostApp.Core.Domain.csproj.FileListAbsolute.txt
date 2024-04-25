@@ -1,0 +1,11 @@
+C:\pro3\PostApp\Domain\bin\Debug\net7.0\PostApp.Core.Domain.deps.json
+C:\pro3\PostApp\Domain\bin\Debug\net7.0\PostApp.Core.Domain.dll
+C:\pro3\PostApp\Domain\bin\Debug\net7.0\PostApp.Core.Domain.pdb
+C:\pro3\PostApp\Domain\obj\Debug\net7.0\PostApp.Core.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\pro3\PostApp\Domain\obj\Debug\net7.0\PostApp.Core.Domain.AssemblyInfoInputs.cache
+C:\pro3\PostApp\Domain\obj\Debug\net7.0\PostApp.Core.Domain.AssemblyInfo.cs
+C:\pro3\PostApp\Domain\obj\Debug\net7.0\PostApp.Core.Domain.csproj.CoreCompileInputs.cache
+C:\pro3\PostApp\Domain\obj\Debug\net7.0\PostApp.Core.Domain.dll
+C:\pro3\PostApp\Domain\obj\Debug\net7.0\refint\PostApp.Core.Domain.dll
+C:\pro3\PostApp\Domain\obj\Debug\net7.0\PostApp.Core.Domain.pdb
+C:\pro3\PostApp\Domain\obj\Debug\net7.0\ref\PostApp.Core.Domain.dll

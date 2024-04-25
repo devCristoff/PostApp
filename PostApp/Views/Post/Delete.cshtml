@@ -1,0 +1,44 @@
+﻿@using PostApp.Core.Application.ViewModels.Posts;
+@model SavePostViewModel;
+
+@{
+    ViewData["Title"] = "Delete Post";
+}
+
+<div class="row">
+    <div class="col-6 offset-3">
+        <div class="card">
+            <div class="card-header bg-white">
+                <h4>Are you sure you want to delete this post?</h4>
+            </div>
+            <div class="card-body">
+                <div class="p-2">
+                    <p>@Model.Message</p>
+
+                    @if (Model.ImageUrl != null)
+                    {
+                        <img class="card-img" src="@Model.ImageUrl" alt="Post">
+                    }
+                    else if (Model.VideoUrl != null)
+                    {
+                        <iframe height="450" class="card-img" src="@Model.VideoUrl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    }
+                </div>
+            </div>
+            <div class="card-footer bg-white">
+                <form method="post" asp-controller="Post" asp-action="Delete">
+                    <input type="hidden" asp-for="Id" />
+
+                    <div class="row">
+                        <div class="col-6">
+                            <a asp-controller="Home" asp-action="Index" class="btn btn-secondary form-control">Cancelar</a>
+                        </div>
+                        <div class="col-6">
+                            <button type="submit" class="btn btn-outline-danger form-control">Delete</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

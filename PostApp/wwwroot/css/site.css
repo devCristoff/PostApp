@@ -1,0 +1,54 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+a {
+    color: inherit; /* Utiliza el color heredado */
+    text-decoration: none; /* Sin subrayado */
+}
+
+.profile-img {
+    width: 48px;
+    height: 48px;
+}
+
+.avatar-img {
+    height: 150px;
+    width: 150px;
+}
+
+.sticky-column {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0.75rem; /* Adjust as needed */
+    /* Additional styling */
+    background-color: white; /* Adjust as needed */
+    padding: 15px; /* Adjust as needed */
+    /* Ensure z-index is higher than other content to remain visible */
+    z-index: 1000;
+}
+
+/* Adjust the z-index of the dropdown */
+.dropdown-menu {
+    z-index: 1001; /* Ensure it's higher than the sticky column */
+}
+

@@ -1,0 +1,17 @@
+C:\pro3\PostApp\PostApp.Infrastructure.Shared\bin\Debug\net7.0\PostApp.Infrastructure.Shared.deps.json
+C:\pro3\PostApp\PostApp.Infrastructure.Shared\bin\Debug\net7.0\PostApp.Infrastructure.Shared.dll
+C:\pro3\PostApp\PostApp.Infrastructure.Shared\bin\Debug\net7.0\PostApp.Infrastructure.Shared.pdb
+C:\pro3\PostApp\PostApp.Infrastructure.Shared\bin\Debug\net7.0\PostApp.Core.Application.dll
+C:\pro3\PostApp\PostApp.Infrastructure.Shared\bin\Debug\net7.0\PostApp.Core.Domain.dll
+C:\pro3\PostApp\PostApp.Infrastructure.Shared\bin\Debug\net7.0\PostApp.Core.Application.pdb
+C:\pro3\PostApp\PostApp.Infrastructure.Shared\bin\Debug\net7.0\PostApp.Core.Domain.pdb
+C:\pro3\PostApp\PostApp.Infrastructure.Shared\obj\Debug\net7.0\PostApp.Infrastructure.Shared.csproj.AssemblyReference.cache
+C:\pro3\PostApp\PostApp.Infrastructure.Shared\obj\Debug\net7.0\PostApp.Infrastructure.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\pro3\PostApp\PostApp.Infrastructure.Shared\obj\Debug\net7.0\PostApp.Infrastructure.Shared.AssemblyInfoInputs.cache
+C:\pro3\PostApp\PostApp.Infrastructure.Shared\obj\Debug\net7.0\PostApp.Infrastructure.Shared.AssemblyInfo.cs
+C:\pro3\PostApp\PostApp.Infrastructure.Shared\obj\Debug\net7.0\PostApp.Infrastructure.Shared.csproj.CoreCompileInputs.cache
+C:\pro3\PostApp\PostApp.Infrastructure.Shared\obj\Debug\net7.0\PostApp.Infrastructure.Shared.csproj.CopyComplete
+C:\pro3\PostApp\PostApp.Infrastructure.Shared\obj\Debug\net7.0\PostApp.Infrastructure.Shared.dll
+C:\pro3\PostApp\PostApp.Infrastructure.Shared\obj\Debug\net7.0\refint\PostApp.Infrastructure.Shared.dll
+C:\pro3\PostApp\PostApp.Infrastructure.Shared\obj\Debug\net7.0\PostApp.Infrastructure.Shared.pdb
+C:\pro3\PostApp\PostApp.Infrastructure.Shared\obj\Debug\net7.0\ref\PostApp.Infrastructure.Shared.dll
