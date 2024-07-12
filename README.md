@@ -1,7 +1,9 @@
 # PostApp
 ## Descripción del Proyecto
 
-**PostApp** es una red social desarrollada utilizando Asp.Net. Este proyecto tiene como objetivo ofrecer una plataforma de interacción en línea con una variedad de funcionalidades diseñadas para mejorar la experiencia del usuario. Las características principales de PostApp incluyen:
+**PostApp** es una aplicación web escalable de red social para compartir contenido con amigos y comentar publicaciones. Esta aplicación está desarrollada en una arquitectura Onion con Asp.Net Core MVC, Entitiy Framework como ORM, seguridad, manejo de registro y confirmación de cuenta utilizando Identity, cumpliendo con los principios SOLID y la implementación de patrones de diseños.
+
+Las características principales de PostApp incluyen:
 
 - **Publicación de Contenidos** 📷: Los usuarios pueden compartir sus pensamientos, fotos y videos en su perfil.
 - **Gestión de Amigos** 👥: Los usuarios tienen la capacidad de agregar y eliminar amigos, permitiendo una gestión personalizada de sus conexiones.
