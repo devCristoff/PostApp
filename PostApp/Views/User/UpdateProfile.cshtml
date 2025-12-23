@@ -1,0 +1,98 @@
+﻿@using PostApp.Core.Application.DTOs.Account
+@using PostApp.Core.Application.ViewModels.Users;
+@model UpdateUserViewModel;
+
+@{
+    ViewData["Title"] = "Update Profile";
+    AuthenticationResponse user = ViewBag.User;
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-md-8 offset-md-2">
+            <div class="card bg-white">
+                <div class="card-body">
+
+                    @if (Model.HasError != null && Model.HasError == true)
+                    {
+                        <div class="alert alert-danger alert-dismissible fade show mb-3" role="alert">
+                            <p class="mb-0">@Model.Error</p>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+
+                    <form method="post" asp-controller="User" asp-action="UpdateProfile" enctype="multipart/form-data">
+
+                        <div class="mb-3 fw-normal text-center">
+                            <img class="rounded-circle border border-white border-3 avatar-img" src="@user.ImageUrl" alt="@user.UserName">
+                            <h5>@user.UserName <i class="bi bi-patch-check-fill text-success small"></i></h5>
+                            <h1 class="h3 mt-2">Update</h1>
+                        </div>
+
+                        <div class="mb-4 mt-3">
+
+                            <input type="hidden" asp-for="UserName" value="@user.UserName" />
+                            <input type="hidden" asp-for="ImageUrl" />
+
+                            <div class="row mb-3">
+                                <div class="col-6">
+                                    <label asp-for="FirstName" class="form-label">FirstName:</label>
+                                    <input type="text" asp-for="FirstName" class="form-control" placeholder="FirstName" />
+                                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-6">
+                                    <label asp-for="LastName" class="form-label">LastName:</label>
+                                    <input type="text" asp-for="LastName" class="form-control" placeholder="LastName" />
+                                    <span asp-validation-for="LastName" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-6">
+                                    <label asp-for="Email" class="form-label">Email:</label>
+                                    <input type="email" asp-for="Email" class="form-control" placeholder="holamundo@email.com" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-6">
+                                    <label asp-for="PhoneNumber" class="form-label">Phone:</label>
+                                    <input type="text" asp-for="PhoneNumber" class="form-control" placeholder="(###) ###-####" maxlength="14" />
+                                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Password" class="form-label">Password:</label>
+                                <input type="password" asp-for="Password" class="form-control" placeholder="Password" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="ConfirmPassword" class="form-label">Confirm Password:</label>
+                                <input type="password" asp-for="ConfirmPassword" class="form-control" placeholder="ConfirmPassword" />
+                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="File" class="form-label">Profile Picture:</label>
+                                <input asp-for="File" class="form-control" accept="image/*" />
+                                <span asp-validation-for="File" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <a class="btn btn-warning form-control" asp-controller="User" asp-action="Index">Back</a>
+                            </div>
+                            <div class="col-6">
+                                <button type="submit" class="btn btn-primary form-control">Update</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,328 @@
+﻿@using Microsoft.AspNetCore.Mvc.RazorPages
+@using PostApp.Core.Application.DTOs.Account
+@using PostApp.Core.Application.ViewModels.Comments
+@using PostApp.Core.Application.ViewModels.Posts;
+@model List<PostViewModel>;
+
+@{
+	ViewData["Title"] = "Home";
+	AuthenticationResponse user = ViewBag.User;
+}
+
+<div class="row">
+	<div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+
+		<!-- Post  Message -->
+		<div class="card border-0 mb-3">
+			<div class="card card-body">
+				<form asp-controller="Post" asp-action="Create">
+					<div class="d-flex mb-3">
+						<!-- Avatar -->
+						<div class="me-2">
+							<img class="profile-img rounded-circle" src="@user.ImageUrl" alt="">
+						</div>
+						<!-- Post input -->
+						<div class="w-100">
+							<input type="hidden" name="UserId" value="@user.Id" />
+
+							<textarea name="Message" class="form-control pe-4 border-0" rows="2" placeholder="Share your thoughts..." maxlength="500" required></textarea>
+						</div>
+					</div>
+					<!-- Share feed toolbar START -->
+					<div class="d-flex justify-content-between">
+						<ul class="nav nav-pills nav-stack small fw-normal">
+							<li class="nav-item me-2">
+								<a class="nav-link bg-light py-1 px-2 mb-0" href="#" data-bs-toggle="modal" data-bs-target="#modal-post-image"> <i class="bi bi-image-fill text-success pe-2"></i>Photo</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link bg-light py-1 px-2 mb-0" href="#" data-bs-toggle="modal" data-bs-target="#modal-post-video"> <i class="bi bi-camera-reels-fill text-info pe-2"></i>Video</a>
+							</li>
+						</ul>
+						<div>
+							<button type="submit" class="btn btn-success">Post</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<!-- Modal Image -->
+		<div class="modal fade" id="modal-post-image" tabindex="-1" aria-labelledby="modal-post-image-label" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+
+					<div class="modal-header">
+						<h5 class="modal-title">Image Post</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+
+					<form method="post" asp-controller="Post" asp-action="Create" enctype="multipart/form-data">
+						<div class="modal-body">
+
+							<input type="hidden" name="UserId" value="@user.Id" />
+
+							<div class="mb-3">
+								<label for="post-message">Message</label>
+								<textarea name="Message" id="post-message" class="form-control pe-4" rows="3" placeholder="Share your thoughts..." maxlength="500" required></textarea>
+							</div>
+							<div class="mb-3">
+								<label for="post-image">Image:</label>
+								<input type="file" name="File" id="post-image" class="form-control pe-4" accept="image/*" required />
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+							<button type="submit" class="btn btn-success">Post</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal Video -->
+		<div class="modal fade" id="modal-post-video" tabindex="-1" aria-labelledby="modal-post-video-label" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+
+					<div class="modal-header">
+						<h5 class="modal-title">Video Post</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+
+					<form method="post" asp-controller="Post" asp-action="Create">
+						<div class="modal-body">
+
+							<input type="hidden" name="UserId" value="@user.Id" />
+
+							<div class="mb-3">
+								<label for="post-message">Message:</label>
+								<textarea name="Message" id="post-message" class="form-control pe-4" placeholder="Share your thoughts..." maxlength="500" required></textarea>
+							</div>
+							<div class="mb-3">
+								<label for="post-video">Video Url:</label>
+								<input type="text" name="VideoUrl" id="post-video" class="form-control pe-4" placeholder="Video Url" required />
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+							<button type="submit" class="btn btn-success">Post</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		@* Post List *@
+		@if(Model.Any())
+		{
+			@foreach (var post in Model)
+			{
+				<article class="card mb-3" id="@post.Id">
+					<!-- Card header START -->
+					<div class="card-header border-0 pb-0 bg-white">
+						<div class="d-flex align-items-center justify-content-between">
+							<div class="d-flex align-items-center mt-2">
+								<!-- Avatar -->
+								<div class="me-2">
+									<img class="profile-img rounded-circle" src="@post.User.ImageUrl" alt="@post.User.UserName" title="@post.User.UserName" />
+								</div>
+								<!-- Info -->
+								<div>
+									<div class="nav nav-divider">
+										<h6 class="nav-item card-title mb-0"> @post.User.UserName </h6>
+										<span class="nav-item small ms-1"> • @post.Created</span>
+									</div>
+								</div>
+							</div>
+							<!-- Card feed action dropdown START -->
+							<div class="dropdown">
+								<a href="#" class="text-secondary btn btn-secondary-soft-hover py-1 px-2" id="cardFeedAction" data-bs-toggle="dropdown" aria-expanded="false">
+									<i class="bi bi-three-dots"></i>
+								</a>
+								<!-- Card feed action dropdown menu -->
+								<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cardFeedAction">
+									<li><a class="dropdown-item" asp-controller="Post" asp-action="Edit" asp-route-id="@post.Id"> <i class="bi bi-pencil fa-fw pe-2"></i>Edit</a></li>
+									<li><a class="dropdown-item" asp-controller="Post" asp-action="Delete" asp-route-id="@post.Id"> <i class="bi bi-trash fa-fw pe-2"></i>Delete</a></li>
+								</ul>
+							</div>
+							<!-- Card feed action dropdown END -->
+						</div>
+					</div>
+					<!-- Card header END -->
+					<!-- Card body START -->
+					<div class="card-body">
+						<p>@post.Message</p>
+
+						<!-- Card img -->
+						@if (post.ImageUrl != null)
+						{
+							<img class="card-img" src="@post.ImageUrl" alt="Post">
+						}
+						else if (post.VideoUrl != null)
+						{
+							<iframe height="450" class="card-img" src="@post.VideoUrl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+						}
+
+						<!-- Add comment -->
+						<div class="d-flex my-3">
+							<!-- Avatar -->
+							<div class="avatar me-2">
+								<img class="profile-img rounded-circle" src="@user.ImageUrl" alt="@user.UserName">
+							</div>
+							<!-- Comment box  -->
+							<form class="nav nav-item w-100 position-relative" asp-controller="Comment" asp-action="Create" asp-route-location="Home">
+								
+								<input type="hidden" name="PostId" value="@post.Id" />
+								<input type="hidden" name="Parent" value="-1" />
+								<input type="hidden" name="UserId" value="@user.Id" />
+
+								<input type="text" class="form-control pe-5 bg-light" name="Content" placeholder="Add a comment..." maxlength="100" />
+
+								<button type="submit" class="nav-linkbg-transparent bg-transparent px-3 position-absolute top-50 end-0 translate-middle-y border-0 h-100">
+									<i class="bi bi-send"> </i>
+								</button>
+							</form>
+						</div>
+						
+						<!-- Comment wrap START -->
+						<ul class="list-unstyled">
+							@foreach (var comment in post.Comments.Where(comment => comment.Parent == -1))
+							{
+								<!-- Comment item START -->
+								<li class="comment-item mb-3">
+									<div class="d-flex position-relative">
+										<!-- Avatar -->
+										<div class="">
+											<img class="profile-img rounded-circle" src="@comment.User.ImageUrl" alt="@comment.User.UserName">
+										</div>
+										<div class="ms-2">
+											<!-- Comment by -->
+											<div class="bg-light rounded-start-top-0 p-3 rounded">
+												<div class="d-flex justify-content-between">
+													<h6 class="mb-1">@comment.User.UserName </h6>
+													<small class="ms-2">@comment.Created</small>
+												</div>
+												<p class="small mb-0">@comment.Content</p>
+											</div>
+											
+											@if (post.Comments.Any(c => c.Parent == comment.Id))
+											{
+												await GetReplies(comment.Id, post.Comments.FindAll(c => c.Parent == comment.Id).ToList(), post.Comments, user);
+											}
+
+											<!-- Comment react -->
+											<buttton class="text-muted small" type="button" data-bs-toggle="collapse" data-bs-target="#@($"reply-{comment.Id}")" aria-expanded="false" aria-controls="@($"reply-{comment.Id}")">Reply</buttton>
+
+										</div>
+									</div>
+
+									<!-- Collapse -->
+									<div class="collapse" id="@($"reply-{comment.Id}")">
+										<!-- Add comment -->
+										<div class="d-flex mt-2">
+											<!-- Avatar -->
+											<div class="avatar me-2">
+												<img class="profile-img rounded-circle" src="@user.ImageUrl" alt="@user.UserName">
+											</div>
+											<!-- Comment box  -->
+											<form class="nav nav-item w-100 position-relative" asp-controller="Comment" asp-action="Create" asp-route-location="Home">
+
+												<input type="hidden" name="PostId" value="@post.Id" />
+												<input type="hidden" name="Parent" value="@comment.Id" />
+												<input type="hidden" name="UserId" value="@user.Id" />
+
+												<input type="text" class="form-control pe-5 bg-light" name="Content" placeholder="Add a comment..." maxlength="100" />
+
+												<button type="submit" class="nav-linkbg-transparent bg-transparent px-3 position-absolute top-50 end-0 translate-middle-y border-0 h-100">
+													<i class="bi bi-send"> </i>
+												</button>
+											</form>
+										</div>
+									</div>
+								</li>
+								<!-- Comment item END -->
+							}
+						</ul>
+						<!-- Comment wrap END -->
+					</div>
+					<!-- Card body END -->
+				</article>
+			}
+		}
+		else
+		{
+			<div class="card">
+				<div class="card-header border-0 pb-0 bg-white text-center">
+					<h4 class="text-muted">You haven't posted anything yet!</h4>
+				</div>
+			</div>
+		}		
+	</div>
+</div>
+
+@functions{
+	async Task GetReplies(int commentId, List<CommentViewModel> childComments, List<CommentViewModel> allComments, AuthenticationResponse user)
+	{
+		<!-- Comment wrap START -->
+		<ul class="list-unstyled my-2">
+			@foreach (var reply in childComments)
+			{
+				<!-- Comment item START -->
+				<li class="comment-item">
+					<div class="d-flex position-relative">
+						<!-- Avatar -->
+						<div class="">
+							<img class="profile-img rounded-circle" src="@reply.User.ImageUrl" alt="@reply.User.UserName" title="@reply.User.UserName" />
+						</div>
+						<div class="ms-2">
+							<!-- Comment by -->
+							<div class="bg-light rounded-start-top-0 p-3 rounded">
+								<div class="d-flex justify-content-between">
+									<h6 class="mb-1">@reply.User.UserName </h6>
+									<small class="ms-2">@reply.Created</small>
+								</div>
+								<p class="small mb-0">@reply.Content</p>
+							</div>
+
+							@if (allComments.Any(comment => comment.Parent == reply.Id))
+							{
+								await GetReplies(reply.Id, allComments.Where(comment => comment.Parent == reply.Id).ToList(), allComments, user);
+							}
+
+							<!-- Comment react -->
+							<buttton class="text-muted small" type="button" data-bs-toggle="collapse" data-bs-target="#@($"reply-{reply.Id}")" aria-expanded="false" aria-controls="@($"reply-{reply.Id}")">Reply</buttton>
+
+						</div>
+					</div>
+
+					<!-- Collapse -->
+					<div class="collapse" id="@($"reply-{reply.Id}")">
+						<!-- Add comment -->
+						<div class="d-flex my-3">
+							<!-- Avatar -->
+							<div class="avatar me-2">
+								<img class="profile-img rounded-circle" src="@user.ImageUrl" alt="@user.UserName">
+							</div>
+
+							<!-- Comment box  -->
+							<form class="nav nav-item w-100 position-relative" asp-controller="Comment" asp-action="Create" asp-route-location="Home">
+
+								<input type="hidden" name="PostId" value="@reply.PostId" />
+								<input type="hidden" name="Parent" value="@reply.Id" />
+								<input type="hidden" name="UserId" value="@user.Id" />
+
+								<input type="text" class="form-control pe-5 bg-light" name="Content" placeholder="Add a comment..." maxlength="100" />
+
+								<button type="submit" class="nav-linkbg-transparent bg-transparent px-3 position-absolute top-50 end-0 translate-middle-y border-0 h-100">
+									<i class="bi bi-send"> </i>
+								</button>
+							</form>
+						</div>
+					</div>
+				</li>
+				<!-- Comment item END -->
+			}
+		</ul>
+		<!-- Comment wrap END -->
+	}
+}

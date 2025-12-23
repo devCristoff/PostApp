@@ -1,0 +1,58 @@
+﻿@using PostApp.Core.Application.ViewModels.Posts;
+@model SavePostViewModel;
+
+@{
+    ViewData["Title"] = "Edit Post";
+}
+
+<div class="row">
+    <div class="col-6 offset-3">
+        <div class="card">
+            <div class="card-header bg-white">
+                <h4>Edit Post</h4>
+            </div>
+            <form method="post" asp-controller="Post" asp-action="Edit" enctype="multipart/form-data">
+                <div class="card-body">
+
+                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="UserId" />
+                    <input type="hidden" asp-for="ImageUrl" />
+                    <input type="hidden" asp-for="Created" />
+                    <input type="hidden" asp-for="CreatedBy" />
+
+                    <div class="mb-3">
+                        <label asp-for="Message">Message:</label>
+                        <textarea asp-for="Message" class="form-control pe-4" placeholder="Share your thoughts..." maxlength="500" required></textarea>
+                    </div>
+                    @if (Model.ImageUrl != null)
+                    {
+                        <div class="mb-3">
+                            <label asp-for="File">Video Url:</label>
+                            <input type="file" asp-for="File" class="form-control pe-4" />
+                        </div>
+                    }
+                    else if (Model.VideoUrl != null)
+                    {
+                        <div class="mb-3">
+                            <label asp-for="VideoUrl">Video Url:</label>
+                            <input type="text" asp-for="VideoUrl" class="form-control pe-4" placeholder="Video Url" required />
+                        </div>
+                    }
+                    
+
+                </div>
+
+                <div class="card-footer bg-white">
+                    <div class="row">
+                        <div class="col-6">
+                            <a asp-controller="Home" asp-action="Index" class="btn btn-secondary form-control">Cancelar</a>
+                        </div>
+                        <div class="col-6">
+                            <button type="submit" class="btn btn-outline-primary form-control">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

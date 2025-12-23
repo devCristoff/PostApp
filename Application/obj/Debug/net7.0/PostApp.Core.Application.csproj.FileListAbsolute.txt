@@ -1,0 +1,15 @@
+C:\pro3\PostApp\Application\bin\Debug\net7.0\PostApp.Core.Application.deps.json
+C:\pro3\PostApp\Application\bin\Debug\net7.0\PostApp.Core.Application.dll
+C:\pro3\PostApp\Application\bin\Debug\net7.0\PostApp.Core.Application.pdb
+C:\pro3\PostApp\Application\bin\Debug\net7.0\PostApp.Core.Domain.dll
+C:\pro3\PostApp\Application\bin\Debug\net7.0\PostApp.Core.Domain.pdb
+C:\pro3\PostApp\Application\obj\Debug\net7.0\PostApp.Core.Application.csproj.AssemblyReference.cache
+C:\pro3\PostApp\Application\obj\Debug\net7.0\PostApp.Core.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\pro3\PostApp\Application\obj\Debug\net7.0\PostApp.Core.Application.AssemblyInfoInputs.cache
+C:\pro3\PostApp\Application\obj\Debug\net7.0\PostApp.Core.Application.AssemblyInfo.cs
+C:\pro3\PostApp\Application\obj\Debug\net7.0\PostApp.Core.Application.csproj.CoreCompileInputs.cache
+C:\pro3\PostApp\Application\obj\Debug\net7.0\PostApp.Core.Application.csproj.CopyComplete
+C:\pro3\PostApp\Application\obj\Debug\net7.0\PostApp.Core.Application.dll
+C:\pro3\PostApp\Application\obj\Debug\net7.0\refint\PostApp.Core.Application.dll
+C:\pro3\PostApp\Application\obj\Debug\net7.0\PostApp.Core.Application.pdb
+C:\pro3\PostApp\Application\obj\Debug\net7.0\ref\PostApp.Core.Application.dll
